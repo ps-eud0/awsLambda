@@ -1,0 +1,5 @@
+com\samlocal\Service.class
+com\samlocal\Request.class
+com\samlocal\Response.class
+com\samlocal\BasicUserInfo.class
+com\samlocal\LambdaHandlerCls.class

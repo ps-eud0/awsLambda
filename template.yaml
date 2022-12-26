@@ -1,0 +1,24 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+
+Globals:
+  Function:
+    Timeout: 20
+
+Resources:
+  LambdaFunction:    # logical id of lambda function
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: practice     #could be anything
+      CodeUri: #target/samLocalTest-1.0-SNAPSHOT.jar   # by default points to project directory
+      Handler: com.samlocal.LambdaHandlerCls::handleRequest   # mention full path that implements HandleReq interface
+      Runtime: java11
+      Architectures:
+        - x86_64
+      MemorySize: 512
+      Events:       #provide event by which this lambda function will get revoked
+        GatewayApi:
+          Type: Api
+          Properties:
+            Path: /basicuserinfo    # endpoint
+            Method: post
